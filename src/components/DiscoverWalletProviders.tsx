@@ -12,9 +12,10 @@ export const DiscoverWalletProviders = () => {
                 {!accounts && <button onClick={makeConnection}>Connect Wallet</button>}
                 {accounts && <button onClick={addNetwork}>Add Chain</button>}
 
-                <p>Is connected: {isConnected ? "true" : "false"}</p>
-                <p>Wallet address: {accounts}</p>
-                <p>Chain id: {formatChainAsNum(networks)}</p>
+                {/* <p>Is connected: {isConnected ? "true" : "false"}</p> */}
+                <p>Wallet Adrress: {accounts}</p>
+                {networks && <p>Chain id: {formatChainAsNum(networks)}</p>}
+
 
                 <label htmlFor="">Enter wallet address</label>
                 <input style={{
@@ -22,7 +23,11 @@ export const DiscoverWalletProviders = () => {
                     padding: "5px"
                 }} value={address} onChange={(e) => setAddress(e.target.value)} />
                 <button onClick={() => checkWalletBal(address)}>Get wallet balance</button>
-                <h6>Balance: {accBal} ETH on chain {formatChainAsNum(networks)}</h6>
+                {
+                    accBal && <h6 style={{
+                        fontSize: "20px"
+                    }}>Balance: {accBal} ETH on chain {formatChainAsNum(networks)}</h6>
+                }
 
             </div>
             <hr />
