@@ -23,11 +23,7 @@ export const useConnect = () => {
     const makeConnection = async () => {
         if (window.ethereum) {
             try {
-
                 const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-
-
-
                 const chainId = await window.ethereum.request({ method: 'eth_chainId' });
                 setConnectionDetails({ account: accounts[0], networks: chainId, isConnected: true })
             } catch (error) {
@@ -48,13 +44,10 @@ export const useConnect = () => {
                     address,
                 ]
             })
-
-
-            return formatBalance(balance)
+            return balance
         } catch (error) {
             console.log(error)
             return null
-
         }
 
 
